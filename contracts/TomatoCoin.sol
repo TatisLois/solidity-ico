@@ -2,13 +2,16 @@
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
+import "./Pause.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract TomatoCoin is ERC20, Ownable {
+contract TomatoCoin is ERC20, Ownable, Pause {
     // === Constants ===
     uint256 constant MAX_SUPPLY = 500000000000000000000000;
-    uint256 constant RATE = 5;
+
+    // === Immutable Storage ===
+    uint256 public rate = 5;
 
     /**
         @dev The token is named Tomato and has a symbol of TOM. 
@@ -19,7 +22,7 @@ contract TomatoCoin is ERC20, Ownable {
         _mint(msg.sender, 75000 * 10**decimals());
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount) public isPaused onlyOwner {
         require(
             (totalSupply() + amount) <= MAX_SUPPLY,
             "Max token supply reached"
@@ -27,13 +30,21 @@ contract TomatoCoin is ERC20, Ownable {
         _mint(to, amount);
     }
 
-    // maybe lives in coin
-    function rate(uint256 amount) public pure returns (uint256) {
-        return amount * RATE;
+    // TODO: Extends for isPaused
+    function _transfer(
+        address from,
+        address to,
+        uint256 value
+    ) internal override isPaused {
+        super._transfer(from, to, value);
     }
 
-    // same as above
-    function toTokens(uint256 amount) public view returns (uint256) {
+    function tokensAsWei(uint256 amount) public view returns (uint256) {
+        return amount * rate;
+    }
+
+    function toTokens(address holder) public view returns (uint256) {
+        uint256 amount = balanceOf(holder);
         return amount / 10**decimals();
     }
 }

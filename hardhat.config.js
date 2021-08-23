@@ -9,6 +9,7 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
     console.log(account.address);
   }
 });
+
 // You need to export an object to set up your config
 // Go to https://hardhat.org/config/ to learn more
 
@@ -20,7 +21,7 @@ module.exports = {
   networks: {
     hardhat: {
       accounts: {
-        accountsBalance: "20000000000000000000000",
+        accountsBalance: "200000000000000000000000",
       },
     },
   },
