@@ -17,7 +17,8 @@ contract Pause is Ownable {
         _;
     }
 
-    function pauseToggle() public onlyOwner {
+    // === Functions ===
+    function pauseToggle() external onlyOwner {
         if (paused) {
             paused = false;
         } else {
@@ -27,7 +28,7 @@ contract Pause is Ownable {
         emit Paused(paused);
     }
 
-    function pauseStatus() public view returns (bool) {
+    function pauseStatus() external view returns (bool) {
         return paused;
     }
 }

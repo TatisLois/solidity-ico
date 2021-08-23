@@ -13,15 +13,12 @@ contract TomatoCoin is ERC20, Ownable, Pause {
     // === Immutable Storage ===
     uint256 public rate = 5;
 
-    /**
-        @dev The token is named Tomato and has a symbol of TOM. 
-        The premint amount of 75000 was created to accomodate the seed phase
-        and is based on a conversation rate of 1 ether to 5 tokens.
-     */
+    // === Contructor ===
     constructor() ERC20("Tomato", "TOM") {
         _mint(msg.sender, 75000 * 10**decimals());
     }
 
+    // === Functions ===
     function mint(address to, uint256 amount) public isPaused onlyOwner {
         require(
             (totalSupply() + amount) <= MAX_SUPPLY,
@@ -30,21 +27,16 @@ contract TomatoCoin is ERC20, Ownable, Pause {
         _mint(to, amount);
     }
 
-    // TODO: Extends for isPaused
+    function toTokens(address holder) public view returns (uint256) {
+        uint256 amount = balanceOf(holder);
+        return amount / 10**decimals();
+    }
+
     function _transfer(
         address from,
         address to,
         uint256 value
     ) internal override isPaused {
         super._transfer(from, to, value);
-    }
-
-    function tokensAsWei(uint256 amount) public view returns (uint256) {
-        return amount * rate;
-    }
-
-    function toTokens(address holder) public view returns (uint256) {
-        uint256 amount = balanceOf(holder);
-        return amount / 10**decimals();
     }
 }
