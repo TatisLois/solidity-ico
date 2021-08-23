@@ -14,12 +14,13 @@ async function main() {
   // await hre.run('compile');
 
   // We get the contract to deploy
-  const Greeter = await hre.ethers.getContractFactory("Greeter");
-  const greeter = await Greeter.deploy("Hello, Hardhat!");
+  const TomatoICO = await hre.ethers.getContractFactory("TomatoICO");
+  const tomatoICO = await TomatoICO.deploy();
 
-  await greeter.deployed();
+  await tomatoICO.deployed();
 
-  console.log("Greeter deployed to:", greeter.address);
+  console.log("tomatoICO deployed to:", tomatoICO.address);
+  // tomatoICO deployed to: 0x9C2D26360DFb62AeBB6D6b0E645aFc5a00D2DDFb
 }
 
 // We recommend this pattern to be able to use async/await everywhere

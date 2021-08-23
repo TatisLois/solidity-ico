@@ -1,7 +1,6 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
 const { BigNumber, utils } = ethers;
-const { formatEther } = utils;
 
 const deployUtility = async () => {
   const TomatoCoin = await ethers.getContractFactory("TomatoCoin");
