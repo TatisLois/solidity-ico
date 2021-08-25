@@ -1,0 +1,7 @@
+{
+  "extends": "eslint:recommended",
+  "ecmaVersion": 2020,
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

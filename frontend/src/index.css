@@ -1,0 +1,46 @@
+@font-face {
+  font-family: "Chillax-Variable";
+  src: url("./assets/fonts/Chillax-Variable.woff2") format("woff2"),
+    url("./assets/fonts/Chillax-Variable.woff") format("woff"),
+    url("./assets/fonts/Chillax-Variable.ttf") format("truetype");
+  font-weight: 200 700;
+  font-display: swap;
+  font-style: normal;
+}
+
+html {
+  background-color: #f4f1de;
+  font-family: Chillax-Variable, Helvetica;
+  font-size: 16px;
+  overflow-wrap: break-word;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.not-connected {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh;
+}
+
+@media only screen and (max-width: 500px) {
+  html {
+    font-size: 14px;
+  }
+}

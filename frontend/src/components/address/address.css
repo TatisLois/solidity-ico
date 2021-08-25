@@ -1,0 +1,8 @@
+.address {
+  display: flex;
+}
+
+.address-text {
+  margin: 0 0 0 1rem;
+  line-height: 3rem;
+}

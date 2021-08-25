@@ -1,0 +1,14 @@
+.token {
+  display: flex;
+}
+
+.token-title {
+  margin: 0 1rem 0 0;
+}
+
+.token-buttons {
+  background-color: transparent;
+  border-top: none;
+  border-left: none;
+  padding: 0.5rem;
+}

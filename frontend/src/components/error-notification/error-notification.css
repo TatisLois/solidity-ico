@@ -1,0 +1,12 @@
+.error-notification {
+  visibility: hidden;
+  min-width: 200px;
+  font-size: 1.5rem;
+  color: #d62828;
+  text-align: center;
+  margin: 0 0 2rem 0;
+}
+
+.error-notification.show {
+  visibility: visible;
+}
